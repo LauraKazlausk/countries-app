@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
-import Header from '../Header/Header';
 import SearchInput from '../SearchInput/SearchInput';
 import { SpinnerDotted } from 'spinners-react';
+import './AllCountries.css';
+import '../../App.css'
+import FilteredCountries from '../FilteredCountries/FilteredCountries';
 
 const AllCountries = () => {
 
@@ -65,40 +67,37 @@ const AllCountries = () => {
     getAllCountries();
   }, []);
 
+  
   return (
     <div className="all-country-wrapper">
       <div className="country-top">
-
-        {/* <div className="filter">
-          <FilterCountry onSelect={getCountryByRegion} />
-        </div> */}
-      </div>
-
-      <div className="country__bottom">
-        {isLoading && !error &&  <SpinnerDotted enabled={true} color='#e61515'  />}
-        {error && !isLoading && <h4>{error}</h4>}
-
-        <div className="search">
-          <SearchInput onSearch={getCountryByName} />
+        <div className="header">
+          <h1 className='title'>Search for a country</h1>
+          <SearchInput onSearch={getCountryByName} /> 
+          <div>
+            <FilteredCountries onSelect={getCountryByRegion} />
+          </div>
         </div>
-
-        
+      </div>
+      <div className="country-bottom">
+        {isLoading && !error &&  <SpinnerDotted enabled={true} color='#595b5c'  />}
+        {error && !isLoading && <h4>{error}</h4>}
         {countries?.map((country) => (
-          <Link to={`/country/${country.name.common}`}>
-            <div className="country__card">
-              <div className="country__img">
+          <Link className='link' to={`/country/${country.name.common}`}>
+            <div className="country-card">
+              <div className="country-img">
                 <img src={country.flags.png} alt="" />
               </div>
 
-              <div className="country__data">
-                <h3>{country.name.common}</h3>
-                <h6>
+              <div className="country-data">
+                <h3 className='country-name'>{country.name.common}</h3>
+                {/* <h6>
                   {" "}
                   Population:{" "}
                   {new Intl.NumberFormat().format(country.population)}
                 </h6>
                 <h6> Region: {country.region}</h6>
-                <h6>Capital: {country.capital}</h6>
+                <h6>Capital: {country.capital}</h6> */}
               </div>
             </div>
           </Link>

@@ -9,8 +9,8 @@ const Spinner = () => {
             <SpinnerDotted
                 enabled={false}
                 size='70%'
-                color='#e61515'
-                secondaryColor='#f7b7b7' />
+                color='#595b5c'
+                secondaryColor='#595b5c' />
         </div>
     )
 }

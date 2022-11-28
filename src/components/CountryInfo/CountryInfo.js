@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { SpinnerDotted } from 'spinners-react';
+import SearchInput from '../SearchInput/SearchInput';
+import './CountryInfo.css';
+
 
 const CountryInfo = () => {
   const [country, setCountry] = useState([]);
@@ -28,9 +31,10 @@ const CountryInfo = () => {
   },[countryName])
 
   return (
+ 
     <div className='country-wrapper'>
 
-      {isLoading && !error && <SpinnerDotted enabled={true}  color='#e61515'  />}
+      {isLoading && !error && <SpinnerDotted enabled={true}  color='#595b5c'  />}
       {error && !isLoading && {error}}
 
 
@@ -39,29 +43,28 @@ const CountryInfo = () => {
           <div className='country-flag'>
             <img src={country.flag.png} alt='' />
           </div>
-          <h3>{country.name.common}</h3>
-          <div className="country__info-left">
-              <h5>
-                Population:{" "}
+          <h3 className='country-name'>{country.name.common}</h3>
+          <div className="country-info">
                 <span>
-                  {new Intl.NumberFormat().format(country.population)}
+                  <img src={country.flags.png} alt="" />
                 </span>
-              </h5>
+                <h3>Capital: {country.capital}</h3>
               <h5>
-                Region: <span>{country.region}</span>
-              </h5>
+                  {" "}
+                  Population:{" "}
+                  {new Intl.NumberFormat().format(country.population)}
+                </h5>
+                <h5> Region: {country.region}</h5>
               <h5>
                 Sub Region: <span>{country.subregion}</span>
               </h5>
-              <h5>
-                Capital: <span>{country.capital}</span>
-              </h5>
+
             </div>
         </div>
       ))}
 
       <button className='back-button'>
-        <Link to ='/'> Back</Link>
+        <Link className='link-button' to ='/'> Back</Link>
       </button>
     </div>
   )

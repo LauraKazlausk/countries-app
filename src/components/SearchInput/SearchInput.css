@@ -1,0 +1,13 @@
+input{
+    border: 1px solid transparent;
+    border-radius: 23px;
+    background-color: rgb(191, 194, 196);
+    margin: 20px ;
+    height: 30px;
+    width: 250px;
+}
+.search-input-form{
+   display: flex;
+   justify-content: center;
+
+}

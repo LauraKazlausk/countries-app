@@ -1,0 +1,8 @@
+.selectElement{
+padding: 10px 25px;
+background-color: rgb(191, 194, 196);
+border: none;
+border-radius: 5px;
+color: rgb(119, 119, 119);
+cursor: pointer;
+}

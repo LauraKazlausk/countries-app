@@ -1,5 +1,6 @@
 
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import './SearchInput.css'
 
 const SearchInput = ({onSearch}) => {
 
@@ -7,12 +8,11 @@ const SearchInput = ({onSearch}) => {
 
     const submitHandler = (e) =>{
         e.preventDefault();
-
         onSearch(input);
     }
   return (
-    <form onSubmit={submitHandler}>
-        <input type='text' placeholder='Search' value={input} onChange={(e)=> setInput(e.target.value)} />
+    <form className='search-input-form' onSubmit={submitHandler}>
+        <input type='text' placeholder='Search for a country...' value={input} onChange={(e)=> setInput(e.target.value)} />
     </form>
   )
 }
